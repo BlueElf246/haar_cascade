@@ -29,11 +29,11 @@ class CascadeClassifier():
                 return 0
         return 1
     def save(self, filename):
-        with open(filename+".pkl") as f:
+        with open(filename+".pkl", 'wb') as f:
             pickle.dump(self, f)
     @staticmethod
     def load(filename):
-        with open(filename+".pkl") as f:
+        with open(filename+".pkl", 'rb') as f:
             return pickle.load(f)
 
 
