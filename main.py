@@ -99,6 +99,7 @@ class ViolaJones:
         y= np.array(list(map(lambda data: data[1], training_data)))
         i=0
         for positive_regions, negative_regions in features:
+            print(f"done {i} in total of {len(features)}")
             feature = lambda ii: sum([pos.compute_feature(ii) for pos in positive_regions]) - \
                                 sum([neg.compute_feature(ii) for neg in negative_regions])
             X[i]=list(map(lambda data: feature(data[0]), training_data))

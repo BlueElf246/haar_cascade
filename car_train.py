@@ -2,6 +2,8 @@ import glob
 import pickle
 import cv2
 import numpy as np
+from sklearn.utils import shuffle
+from sklearn.model_selection import train_test_split
 def load_dataset():
     car=glob.glob("dataset/vehicles/*.png")
     non_car= glob.glob("dataset/non-vehicles/*.png")
@@ -21,7 +23,13 @@ car, non_car= load_dataset()
 car_data= read_img(car)
 non_car_data= read_img(non_car, pos=False)
 
-training= np.vstack((car_data,non_car_data))
+shuffle(car_data)
+shuffle(non_car_data)
 
+print(len(car_data), len(non_car_data))
+training= np.vstack((car_data[:2000],non_car_data[:4000]))
+testing = np.vstack((car_data[2000:], non_car_data[4000:]))
 with open("car_train.pkl",'wb') as f:
     pickle.dump(training,f)
+with open("car_test.pkl",'wb') as f:
+    pickle.dump(testing, f)

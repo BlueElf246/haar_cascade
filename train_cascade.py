@@ -19,6 +19,7 @@ def evaluate(clf, test):
             count+=1
     print(f"correct {count} out of {test.shape[0]}")
 
-
 train('car_train.pkl')
+test('car_test.pkl')
+
 
