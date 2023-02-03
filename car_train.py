@@ -13,6 +13,7 @@ def read_img(dataset,pos=True):
     data=[]
     for index,img_path in enumerate(dataset):
         img=cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
+        img= cv2.resize(img, (19,19))
         if pos==True:
             data.append([img,1])
         else:
